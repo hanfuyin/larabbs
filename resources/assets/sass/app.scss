@@ -31,6 +31,18 @@ body{
   margin-bottom: 60px;
 }
 
+/*
+* User register page
+*/
+
+.register-page {
+  img.captcha {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
 .footer{
   position: absolute;
   bottom: 0;
@@ -40,7 +52,7 @@ body{
 
   .container{
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 15px;a
 
     p {
       margin: 19px 0;
@@ -52,3 +64,4 @@ body{
     }
   }
 }
+

@@ -8375,6 +8375,16 @@ body {
   margin-bottom: 60px;
 }
 
+/*
+* User register page
+*/
+
+.register-page img.captcha {
+  margin-bottom: 0px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -8388,12 +8398,12 @@ body {
   padding-left: 15px;
 }
 
-.footer .container p {
+.footer .container a p {
   margin: 19px 0;
   color: #c1c1c1;
 }
 
-.footer .container p a {
+.footer .container a p a {
   color: inherit;
 }
 
