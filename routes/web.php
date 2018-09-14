@@ -18,3 +18,5 @@ Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit'
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
