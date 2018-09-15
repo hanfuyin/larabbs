@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 
+
 class TopicsController extends Controller
 {
     public function __construct()
@@ -14,9 +15,9 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request, Topic $topic)
 	{
-		$topics = Topic::with('user', 'category')->paginate(30);
+		$topics = Topic::withOrder($request->order)->paginate(10);
 		return view('topics.index', compact('topics'));
 	}
 

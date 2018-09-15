@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
         //获取Faker实例
         $faker = app(Faker\Generator::class);
 
@@ -35,8 +36,8 @@ class UsersTableSeeder extends Seeder
         User::insert($user_array);
 
         $user = User::find(1);
-        $user->name = 'Summer';
-        $user->email = 'summer@yousails.com';
+        $user->name = 'hanfuyin';
+        $user->email = '18910490095@163.com';
         $user->avatar = 'https://fsdhubcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
         $user->save();
     }
