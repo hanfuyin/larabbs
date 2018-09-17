@@ -17,4 +17,19 @@ class ReplyRequest extends Request
             'content.min' => '回复最少两个字!',
         ];
     }
+
+    public function withValidator($validator)
+    {
+        $content = $this->request->get('content');
+
+        $content = clean($content, 'user_topic_body');
+
+        if($content == "")
+        {
+            $validator->errors()->add( 'content', '回复内容为空!' );
+            $this->failedValidation($validator);
+        }
+
+        $this->request->set('content', $content);
+    }
 }
