@@ -60,7 +60,9 @@ return array(
      */
     'menu' => [
         '用户与权限' => [
-           'users'
+            'users',
+            'roles',
+            'permissions'
         ],
     ],
 
