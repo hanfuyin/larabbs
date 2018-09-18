@@ -14,6 +14,24 @@ class User extends Authenticatable
         notify as protected laravelNotify;
     }
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password','introduction','avatar',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
     public function notify($instance)
     {
         //如果要通知的人是当前用户,就不必通知了!
@@ -32,23 +50,23 @@ class User extends Authenticatable
         $this->unreadNotifications->markAsRead();
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password','introduction','avatar',
-    ];
+    public function setPasswordAttribute($value)
+    {
+        if(strlen($value) != 60){
+            $value = bcrypt($value);
+        }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+        $this->attributes['password'] = $value;
+    }
+
+    public function setAvatarAttribute($path)
+    {
+        if(! starts_with($path, 'http')){
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
+    }
 
     public function replies()
     {
