@@ -14,7 +14,7 @@ function make_excerpt($value, $length = 200)
 
 function model_admin_link($title, $model)
 {
-    return model_likn($title, $model, 'admin');
+    return model_link($title, $model, 'admin');
 }
 
 function model_link($title, $model, $prefix = '')

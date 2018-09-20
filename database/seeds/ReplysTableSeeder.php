@@ -16,7 +16,7 @@ class ReplysTableSeeder extends Seeder
         $users  = User::all()->pluck('id')->toArray();
         $faker = app(Faker\Generator::class);
 
-        DB::table('topics')->select('id')->orderBy('id', 'asc')->chunk(500, function ($topics) use ($users, $faker)
+        DB::table('topics')->select('id')->orderBy('id', 'asc')->chunk(50, function ($topics) use ($users, $faker)
         {
             foreach ($topics as $topic)
             {

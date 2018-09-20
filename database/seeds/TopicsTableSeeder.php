@@ -15,7 +15,7 @@ class TopicsTableSeeder extends Seeder
 
         $faker = app(Faker\Generator::class);
 
-        foreach (range(0,200) as $index)
+        foreach (range(0,20) as $index)
         {
             $topics = factory(Topic::class)->times(200)->make()->each(function ($topic, $index) use ($user_ids, $category_ids, $faker)
             {
