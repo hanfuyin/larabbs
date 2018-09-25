@@ -1,5 +1,5 @@
 * text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
+*.css linguist-vendored=php
+*.scss linguist-vendored=php
+*.js linguist-vendored=php
 CHANGELOG.md export-ignore
