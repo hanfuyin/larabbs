@@ -228,5 +228,17 @@ return [
         ],
 
     ],
+    //接口频率限制,分钟/次数
+    'rate_limits' => [
+        'access' => [
+            'expires' => env('RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('RATE_LIMITS', 60),
+        ],
+        //登录相关,次数/分钟
+        'sign' => [
+            'expires' => env('RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('SIGN_RATE_LIMITS', 10),
+        ]
+    ]
 
 ];
