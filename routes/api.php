@@ -49,13 +49,13 @@ $api->version('v1', [
     });
 
     $api->group([
-        'middleware' => 'api.throttle',
+        'middleware' => ['api.throttle'],
         'limit' => config('api.rate_limits.access.limit'),
         'expires' => config('api.rate_limits.access.expires'),
     ], function ($api){
 
         //需要 token 验证的接口
-        $api->group([], function ($api){
+        $api->group(['middleware' => 'api.auth'], function ($api){
             //当前登录用户信息
             $api->get('user', 'UsersController@me')->name('api.user.show');
 
@@ -69,6 +69,8 @@ $api->version('v1', [
             $api->post('topics', 'TopicsController@store')->name('api.topics.store');
             //修改话题
             $api->patch('topics/{topic}', 'TopicsController@update')->name('api.topics.update');
+            //删除话题
+            $api->delete('topics/{topic}', 'TopicsController@destroy')->name('api.topics.destroy');
         });
     });
 
