@@ -67,6 +67,9 @@ $api->version('v1', [
         });
     });
 
+    //游客可以访问的接口
+    $api->get('categories', 'CategoryController@index')->name('api.categories.index');
+
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
