@@ -10,6 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return $this->response->collection(Category::all(), new CategoryTransformer());
+        $category = Category::paginate(10);
+        return $this->response->paginator($category, new CategoryTransformer());
     }
 }
