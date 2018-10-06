@@ -80,6 +80,8 @@ $api->version('v1', [
             $api->get('user/netifications', 'NotificationsController@index')->name('api.user.notifications.index');
             //未读消息统计
             $api->get('user/notifications/stats', 'NotificationsController@stats')->name('api.user.notifications.stats');
+            //标记消息通知为已读
+            $api->patch('user/read/notifications', 'NotificationsController@read')->name('api.user.notifications.read');
         });
     });
 
