@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Models\Notification;
 use App\Transformers\NotificationTransformer;
+use App\Http\Requests\Api\NotificationsRequest;
 
 class NotificationsController extends Controller
 {
@@ -24,6 +26,18 @@ class NotificationsController extends Controller
     public function read()
     {
         $this->user()->markAsRead();
+
+        return $this->response->noContent();
+    }
+
+    public function readOne(Notification $notification)
+    {
+        if(!$notification->read_at)
+        {
+            $notification->read_at = date('Y-m-d H:i:s');
+            $notification->save();
+            $this->user()->notifiCount();
+        }
 
         return $this->response->noContent();
     }

@@ -53,6 +53,18 @@ class User extends Authenticatable implements JWTSubject
         $this->unreadNotifications->markAsRead();
     }
 
+    public function notifiCount()
+    {
+        $notification_count = 0;
+
+        if($this->notification_count >= 1){
+            $notification_count = $this->notification_count - 1;
+        }
+
+        $this->notification_count = $notification_count;
+
+        $this->save();
+    }
     public function setPasswordAttribute($value)
     {
         if(strlen($value) != 60){
