@@ -82,8 +82,10 @@ $api->version('v1', [
             $api->get('user/notifications/stats', 'NotificationsController@stats')->name('api.user.notifications.stats');
             //标记消息通知为已读
             $api->patch('user/read/notifications', 'NotificationsController@read')->name('api.user.notifications.read');
-
+            //标记单条通知为已读
             $api->put('user/read/notifications/{notification}', 'NotificationsController@readOne')->name('api.user.notifications.readOne');
+            //当前用户的权限
+            $api->get('user/permissions', 'PermissionsController@index')->name('api.user.permissions.index');
         });
     });
 

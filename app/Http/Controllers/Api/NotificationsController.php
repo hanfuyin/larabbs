@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\Notification;
+use Illuminate\Notifications\DatabaseNotification;
 use App\Transformers\NotificationTransformer;
-use App\Http\Requests\Api\NotificationsRequest;
 
 class NotificationsController extends Controller
 {
@@ -30,12 +29,11 @@ class NotificationsController extends Controller
         return $this->response->noContent();
     }
 
-    public function readOne(Notification $notification)
+    public function readOne(DatabaseNotification $notification)
     {
-        if(!$notification->read_at)
+        if(!$notification->read())
         {
-            $notification->read_at = date('Y-m-d H:i:s');
-            $notification->save();
+            $notification->markAsRead();
             $this->user()->notifiCount();
         }
 
