@@ -42,7 +42,7 @@ class TopicsController extends Controller
         if($categoryId = $request->category_id){
             $query->where('category_id', $categoryId);
         }
-        
+
 
         switch ($request->order){
             case 'recent':
