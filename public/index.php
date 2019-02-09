@@ -58,3 +58,5 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+\Log::info(get_memory());

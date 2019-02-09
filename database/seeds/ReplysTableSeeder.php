@@ -21,7 +21,7 @@ class ReplysTableSeeder extends Seeder
             foreach ($topics as $topic)
             {
                 $topic_id = $topic->id;
-                $replys = factory(Reply::class)->times(random_int(0, 100))->make()->each(function ($reply, $index) use ($users, $topic_id, $faker)
+                $replys = factory(Reply::class)->times(random_int(0, 2000))->make()->each(function ($reply, $index) use ($users, $topic_id, $faker)
                 {
                     $reply->user_id = $faker->randomElement($users);
                     $reply->topic_id = $topic_id;

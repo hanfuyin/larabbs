@@ -36,3 +36,9 @@ function model_plural_name($model)
 
     return str_plural($snake_case_name);
 }
+
+function get_memory() {
+    $size = memory_get_usage();
+    $unit=array('B','KB','MB','GB','TB','PB');
+    return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+}
